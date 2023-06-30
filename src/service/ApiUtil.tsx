@@ -12,17 +12,19 @@ export function commonApiAxios(method: any, url: string, params: any) {
         'Access-Control-Allow-Origin': '*',
         'app-version': Constants.APP_VERSION,
         'device-type': Platform.OS,
-        'certification_type': (__DEV__) ? "development" : "distribution",
+        // 'certification_type': (__DEV__) ? "development" : "distribution",
     };
-
-    let axiosConfigForm = {
-        authorization: 'Bearer ' + Constants.ACCESS_TOKEN,
-        "Content-Type": "multipart/form-data",
-        'Access-Control-Allow-Origin': '*',
-        'app-version': Constants.APP_VERSION,
-        'device-type': Platform.OS,
-        'certification_type': (__DEV__) ? "development" : "distribution",
-    };
+    /**
+     * We will use these in future
+     */
+    // let axiosConfigForm = {
+    //     authorization: 'Bearer ' + Constants.ACCESS_TOKEN,
+    //     "Content-Type": "multipart/form-data",
+    //     'Access-Control-Allow-Origin': '*',
+    //     'app-version': Constants.APP_VERSION,
+    //     'device-type': Platform.OS,
+    //     'certification_type': (__DEV__) ? "development" : "distribution",
+    // };
 
     switch (method) {
         case Constants.GET:
@@ -34,46 +36,48 @@ export function commonApiAxios(method: any, url: string, params: any) {
                 .catch((error: any) => {
                     handleError(error.response)
                 });
+        /**
+         * We will use these in future
+         */
+        // case Constants.POST:
+        //     return axios
+        //         .post(url, params, { headers: axiosConfig, timeout: timeout })
+        //         .then((response: any) => {
+        //             return response;
+        //         })
+        //         .catch((error: any) => {
+        //             handleError(error.response)
+        //         });
 
-        case Constants.POST:
-            return axios
-                .post(url, params, { headers: axiosConfig, timeout: timeout })
-                .then((response: any) => {
-                    return response;
-                })
-                .catch((error: any) => {
-                    handleError(error.response)
-                });
+        // case Constants.PUT:
+        //     return axios
+        //         .put(url, params, { headers: axiosConfig, timeout: timeout })
+        //         .then((response: any) => {
+        //             return response;
+        //         })
+        //         .catch((error: any) => {
+        //             handleError(error.response)
+        //         });
 
-        case Constants.PUT:
-            return axios
-                .put(url, params, { headers: axiosConfig, timeout: timeout })
-                .then((response: any) => {
-                    return response;
-                })
-                .catch((error: any) => {
-                    handleError(error.response)
-                });
+        // case Constants.DELETE:
+        //     return axios
+        //         .delete(url, { headers: axiosConfig, params: params, timeout: timeout })
+        //         .then((response: any) => {
+        //             return response;
+        //         })
+        //         .catch((error: any) => {
+        //             handleError(error.response)
+        //         });
 
-        case Constants.DELETE:
-            return axios
-                .delete(url, { headers: axiosConfig, params: params, timeout: timeout })
-                .then((response: any) => {
-                    return response;
-                })
-                .catch((error: any) => {
-                    handleError(error.response)
-                });
-
-        case Constants.POST_WITH_FORM:
-            return axios
-                .post(url, params, { headers: axiosConfigForm, timeout: timeout })
-                .then((response: any) => {
-                    return response;
-                })
-                .catch((error: any) => {
-                    handleError(error.response)
-                });
+        // case Constants.POST_WITH_FORM:
+        //     return axios
+        //         .post(url, params, { headers: axiosConfigForm, timeout: timeout })
+        //         .then((response: any) => {
+        //             return response;
+        //         })
+        //         .catch((error: any) => {
+        //             handleError(error.response)
+        //         });
     }
 }
 

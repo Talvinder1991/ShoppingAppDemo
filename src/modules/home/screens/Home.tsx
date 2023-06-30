@@ -46,7 +46,7 @@ export function Home(props: any) {
         return index
     }
 
-    const shopCartItem = (item: ShopListItems, _index: number) => {
+    const shopCartItem = (item: ShopListItems, index: number) => {
         const foundIndex = getUpdatedIndex(item)
         return (
             <Fragment>
@@ -55,7 +55,7 @@ export function Home(props: any) {
                     <Text style={styles.productName}>{item.name}</Text>
                     <View style={styles.bottomInner}>
                         <Text style={styles.priceText}>{'£'}{item.price.toFixed(2)}</Text>
-                        <TouchableOpacity disabled={!(foundIndex === -1)} activeOpacity={0.5} style={styles.shopNowButton} onPress={() => {
+                        <TouchableOpacity testID={`AddToCart-${index}`} disabled={!(foundIndex === -1)} activeOpacity={0.5} style={styles.shopNowButton} onPress={() => {
                             updateCartList(item)
                         }}>
                             <Text style={styles.shopNowText}>{foundIndex === -1 ? Strings.shopNow : Strings.addedInCart}</Text>
@@ -67,7 +67,7 @@ export function Home(props: any) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='Home'>
             <FlatList
                 bounces={false}
                 data={homeList}
