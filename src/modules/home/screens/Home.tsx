@@ -27,6 +27,8 @@ export function Home(props: any) {
             Config.BASE_URL + EndPointUrl.HOME_LIST,
             {},
         );
+        console.log('res :: ', res);
+
         if (res?.data) {
             dispatch(setHomeItemsList(res?.data));
         }
