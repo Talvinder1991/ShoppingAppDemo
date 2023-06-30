@@ -51,3 +51,29 @@ We can also run this app on any iOS simulator from Xcode directltly, we have to 
 - Find where we downloaded or cloned ShoppinAppDemo project
 - Find the path ShoppingAppDemo/ios/ShoppingAppDemo.xcworkspace and double click on it and it will launch this project on Xcode
 - From here we can select different type of simulators and run our app.
+
+Run the Unit Test Cases commands
+- To run the test cases
+### npm run test
+Or
+### yarn test
+
+- To run the test cases and watch actively for new changes
+### npm run test:watch
+Or
+### yarn test:watch
+
+- To run the test cases and generate the report
+### npm run test-report
+Or
+### yarn test-report
+
+- To claear the test case's cache
+### npm run clear_jest
+Or
+### yarn clear_jest
+
+- To run the test cases and check the code coverage
+### npm run test-coverage
+Or
+### yarn test-coverage
