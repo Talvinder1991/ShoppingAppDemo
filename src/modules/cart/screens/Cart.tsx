@@ -47,10 +47,10 @@ export function Cart(props: any) {
         if (getIndex > -1) {
             const updateDetails = updateList[getIndex]
             if (check) {
-                updateDetails.count && updateDetails.count++;
+                updateDetails.count++;
             } else {
-                if (item.count && item.count > 1) {
-                    updateDetails.count && updateDetails.count--;
+                if (item.count > 1) {
+                    updateDetails.count--;
                 } else {
                     deleteAction(getIndex);
                 }
@@ -65,7 +65,7 @@ export function Cart(props: any) {
                 <Image style={styles.imageBig} source={{ uri: item.img }} resizeMode='cover' />
                 <View style={styles.rightView}>
                     <Text style={styles.productName} ellipsizeMode='tail' numberOfLines={3}>{item.name}</Text>
-                    <Text style={styles.priceText}>{'£'}{(item.price * (item.count ?? 1)).toFixed(2)}</Text>
+                    <Text style={styles.priceText}>{'£'}{(item.price * item.count).toFixed(2)}</Text>
                     <View style={styles.countView}>
                         <TouchableOpacity testID={`Subtraction-${index}`} activeOpacity={0.5} style={styles.subtractTouch} onPress={() => updateItems(item, false)}>
                             <Text style={styles.subtractText}>{'-'}</Text>
