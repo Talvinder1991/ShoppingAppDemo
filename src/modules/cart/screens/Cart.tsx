@@ -59,7 +59,7 @@ export function Cart(props: any) {
         }
     }
 
-    const shopCartItem = (item: ShopListItems, _index: number) => {
+    const shopCartItem = (item: ShopListItems, index: number) => {
         return (
             <View style={styles.cellContainer}>
                 <Image style={styles.imageBig} source={{ uri: item.img }} resizeMode='cover' />
@@ -67,11 +67,11 @@ export function Cart(props: any) {
                     <Text style={styles.productName} ellipsizeMode='tail' numberOfLines={3}>{item.name}</Text>
                     <Text style={styles.priceText}>{'£'}{(item.price * (item.count ?? 1)).toFixed(2)}</Text>
                     <View style={styles.countView}>
-                        <TouchableOpacity activeOpacity={0.5} style={styles.subtractTouch} onPress={() => updateItems(item, false)}>
+                        <TouchableOpacity testID={`Subtraction-${index}`} activeOpacity={0.5} style={styles.subtractTouch} onPress={() => updateItems(item, false)}>
                             <Text style={styles.subtractText}>{'-'}</Text>
                         </TouchableOpacity>
                         <Text style={styles.countText}>{item.count}</Text>
-                        <TouchableOpacity activeOpacity={0.5} style={styles.additionTouch} onPress={() => updateItems(item, true)} ><Text style={styles.additionText}>{'+'}</Text></TouchableOpacity>
+                        <TouchableOpacity testID={`Addition-${index}`} activeOpacity={0.5} style={styles.additionTouch} onPress={() => updateItems(item, true)} ><Text style={styles.additionText}>{'+'}</Text></TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -86,7 +86,7 @@ export function Cart(props: any) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='Cart'>
             <FlatList
                 bounces={false}
                 data={cartList}

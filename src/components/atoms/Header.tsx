@@ -18,12 +18,12 @@ export function Header(props: Props) {
     const isCartMounted = props.currentRoute !== '' && props.currentRoute === Screens.cart;
 
     return (
-        <View style={styles.container}>
-            {isCartMounted ? <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backImgTouch}>
+        <View style={styles.container} testID='Header'>
+            {isCartMounted ? <TouchableOpacity testID='GoBack' onPress={() => navigation.goBack()} style={styles.backImgTouch}>
                 <Image style={styles.backImg} resizeMode='contain' source={icons.backArrow} />
             </TouchableOpacity> : null}
             <Text style={styles.headerText}>{isCartMounted ? Screens.cart : Strings.appName}</Text>
-            {!isCartMounted ? <TouchableOpacity onPress={() => { navigation.navigate(Screens.cart) }} style={styles.cartImgTouch}>
+            {!isCartMounted ? <TouchableOpacity testID='GoToCart' onPress={() => { navigation.navigate(Screens.cart) }} style={styles.cartImgTouch}>
                 <Image style={styles.cartImg} resizeMode='contain' source={cartList.length > 0 ? icons.filledCart : icons.emptyCart} />
                 {cartList.length > 0 && <Text style={styles.cartCountText}>{cartList.length}</Text>}
             </TouchableOpacity> : null}

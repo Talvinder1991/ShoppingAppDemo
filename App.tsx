@@ -11,8 +11,7 @@
 import React, { useState } from 'react';
 import {
   SafeAreaView,
-  StatusBar,
-  useColorScheme,
+  View,
 } from 'react-native';
 import { NavigationContainer, NavigationState } from '@react-navigation/native';
 import { Provider } from 'react-redux';
@@ -23,10 +22,10 @@ import RootStack from './src/navigation/RootStack';
 import { NetworkProvider } from './src/utils/NetworkProvider';
 import { Header } from './src/components/atoms/Header';
 import styles from './App.styles';
+import { globalStyle } from './src/core/GlobalStyles';
 let persistor = persistStore(store);
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
   const [currentRoute, setCurrentRoute] = useState<string>('');
   const getCurrentRoute = (state: NavigationState | undefined) => {
     const index =
@@ -43,24 +42,22 @@ const App = () => {
   };
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NetworkProvider>
-          <NavigationContainer onStateChange={(state: NavigationState | undefined) => {
-            getCurrentRoute(state)
-          }} >
-            <SafeAreaView style={styles.container} />
-            <SafeAreaView style={styles.container2}>
-              <StatusBar
-                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-              />
-              <Header currentRoute={currentRoute} />
-              <RootStack />
-            </SafeAreaView>
-          </NavigationContainer>
-        </NetworkProvider>
-      </PersistGate>
-    </Provider >
+    <View testID='App' style={globalStyle.flexOne}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NetworkProvider>
+            <NavigationContainer onStateChange={(state: NavigationState | undefined) => {
+              getCurrentRoute(state)
+            }} >
+              <SafeAreaView style={styles.container}>
+                <Header currentRoute={currentRoute} />
+                <RootStack />
+              </SafeAreaView>
+            </NavigationContainer>
+          </NetworkProvider>
+        </PersistGate>
+      </Provider >
+    </View>
   );
 };
 

@@ -62,14 +62,12 @@ describe('Should render correctly', () => {
     const { findByTestId } = screen;
     const decreaseCount = await findByTestId('Subtraction-0');
     expect(decreaseCount).toBeTruthy();
-    // expect(decreaseCount).toBeEnabled();
     fireEvent.press(decreaseCount);
   });
   test('on Increase Count Button, action should be dispatched', async () => {
     const { findByTestId } = screen;
     const increaseCount = await findByTestId('Addition-0');
     expect(increaseCount).toBeTruthy();
-    // expect(increaseCount).toBeEnabled();
     fireEvent.press(increaseCount);
   });
 });

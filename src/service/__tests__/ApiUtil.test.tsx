@@ -3,7 +3,6 @@ import { commonApiAxios } from '../ApiUtil';
 import Constants from '../../core/Constants';
 import { Config, EndPointUrl } from '../Config';
 
-
 const cartData = [
   {
     "id": 1,
